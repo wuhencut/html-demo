@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body{
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .fixed{
+      position: fixed;
+      top: 0;
+      height: 50px;
+      max-width: 500px;
+      background: #000;
+      left: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="fixed">居中</div>
+</body>
+<script>
+  resize();
+  window.onresize = function() {
+    resize();
+  }
+  function resize() {
+    let width = document.body.clientWidth;
+    document.getElementsByClassName("fixed")[0].style.marginLeft = - width / 2 + "px";
+    document.getElementsByClassName("fixed")[0].style.width = width + "px";
+  }
+</script>
+</html>
