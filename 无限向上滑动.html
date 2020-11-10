@@ -18,7 +18,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.5) );
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 10%, rgba(255,255,255,0.9) );
       z-index: 100;
     }
     .box .con{
@@ -48,7 +48,7 @@
 </body>
 <script>
   window.onload = function() {
-    let time = 20;
+    let time = 50;
     let con = document.getElementsByClassName("con")[0], con1 = document.getElementsByClassName("con1")[0],  con1Height = con1.offsetHeight;
     document.getElementsByClassName("con2")[0].innerHTML = con1.innerHTML;
     function scroll() {
