@@ -53,7 +53,7 @@
     document.getElementsByClassName("con2")[0].innerHTML = con1.innerHTML;
     function scroll() {
       let conTop = con.style.top ? con.style.top.replace("px", "") : 0;
-      if(conTop < -con1Height){
+      if(conTop <= -con1Height){
         con.style.top = 0 + "px"
       } else {
         con.style.top = conTop - 1 + "px"
