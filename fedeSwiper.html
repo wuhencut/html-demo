@@ -13,23 +13,23 @@
       align-items: center;
       justify-content: center;
     }
-    .slide1{
-      background: red;
-    }
-    .slide2{
-      background: black;
-    }
-    .slide3{
-      background: green;
+    .swiper-slide img{
+      width: 100%;
     }
   </style>
 </head>
 <body>
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide slide1">slide1</div>
-      <div class="swiper-slide slide2">slide2</div>
-      <div class="swiper-slide slide3">slide3</div>
+      <div class="swiper-slide slide1">
+        <img src="https://www.ingtube.com/assets/index/index-1.png" alt="">
+      </div>
+      <div class="swiper-slide slide2">
+        <img src="https://www.ingtube.com/assets/index/index-2.png" alt="">
+      </div>
+      <div class="swiper-slide slide3">
+        <img src="https://www.ingtube.com/assets/index/index-3.png" alt="">
+      </div>
     </div>
   </div>
 </body>
@@ -37,10 +37,10 @@
 <script>
   new Swiper(".swiper-container", {
     effect : 'fade',
-    speed: 2000,
+    speed: 3000,
     loop : true,
     autoplay: {
-      delay: 1000
+      delay: 2000
     }
   })
 </script>
