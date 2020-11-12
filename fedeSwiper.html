@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./utils/swiper.min.css">
+  <style>
+    .swiper-slide {
+      height: 500px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide1{
+      background: red;
+    }
+    .slide2{
+      background: black;
+    }
+    .slide3{
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slide1">slide1</div>
+      <div class="swiper-slide slide2">slide2</div>
+      <div class="swiper-slide slide3">slide3</div>
+    </div>
+  </div>
+</body>
+<script src="./utils/swiper.min.js"></script>
+<script>
+  new Swiper(".swiper-container", {
+    effect : 'fade',
+    speed: 2000,
+    loop : true,
+    autoplay: {
+      delay: 1000
+    }
+  })
+</script>
+</html>
