@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,36 +13,98 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
-    .swiper-slide img{
+
+    .swiper-slide img {
       width: 100%;
+      position: absolute;
+      left: 0;
+    }
+
+    .animate {
+      animation: animate 3s;
+    }
+
+    @keyframes animate {
+      from {
+        top: 100%;
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      to {
+        top: 0;
+        transform: scale(1);
+        opacity: 1
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide slide1">
-        <img src="https://www.ingtube.com/assets/index/index-1.png" alt="">
-      </div>
-      <div class="swiper-slide slide2">
-        <img src="https://www.ingtube.com/assets/index/index-2.png" alt="">
-      </div>
-      <div class="swiper-slide slide3">
-        <img src="https://www.ingtube.com/assets/index/index-3.png" alt="">
+  <div id="page">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide slide1">
+          <img class="ani" swiper-animate-effect="animate" swiper-animate-duration="3s" swiper-animate-delay="0s" src="https://www.ingtube.com/assets/index/index-1.png" alt="">
+        </div>
+        <div class="swiper-slide slide2">
+          <img class="ani" swiper-animate-effect="animate" swiper-animate-duration="3s" swiper-animate-delay="0s" src="https://www.ingtube.com/assets/index/index-2.png" alt="">
+        </div>
+        <div class="swiper-slide slide3">
+          <img class="ani" swiper-animate-effect="animate" swiper-animate-duration="3s" swiper-animate-delay="0s" src="https://www.ingtube.com/assets/index/index-3.png" alt="">
+        </div>
       </div>
     </div>
   </div>
 </body>
 <script src="./utils/swiper.min.js"></script>
+<script src="./utils/swiper.animate.min.js"></script>
+<script src="./utils/vue.min.js"></script>
 <script>
   new Swiper(".swiper-container", {
-    effect : 'fade',
-    speed: 3000,
+    on:{
+      init: function(){
+        swiperAnimateCache(this); //隐藏动画元素 
+        this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+      }, 
+      slideChangeTransitionEnd: function(){ 
+        swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+		this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+      } 
+    },
     loop : true,
     autoplay: {
-      delay: 2000
+      delay: 5000
     }
   })
 </script>
+<script>
+  // new Vue({
+  //   el: "#page",
+  //   mounted() {
+  //     this.initSwiper();
+  //   },
+  //   data() {
+  //     return {
+  //       currIndex: 0,
+  //     }
+  //   },
+  //   methods: {
+  //     initSwiper() {
+  //       let t = this;
+  //       new Swiper(".swiper-container", {
+  //         on: {
+  //           slideChange: function () {
+  //             t.currIndex = this.realIndex;
+  //           }
+  //         },
+  //         loop: true
+  //       })
+  //     }
+  //   }
+  // })
+</script>
+
 </html>
