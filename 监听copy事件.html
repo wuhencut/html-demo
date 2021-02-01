@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./utils/vue.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="page">
+    <div class="copy" ref="copy">1</div>
+    <div class="copy" ref="copy">2</div>
+    <div class="copy" ref="copy">3</div>
+    <div class="copy" ref="copy">4</div>
+    <div class="copy" ref="copy">5</div>
+
+  </div>
+</body>
+<script>
+  new Vue({
+    el: "#page",
+    data() {
+      return {}
+    },
+    mounted() {
+      this.monitorCopy();
+    },
+    methods: {
+      monitorCopy() {
+        let arr = Array.from(document.getElementsByClassName("copy"));
+        arr.forEach(element => {
+            // console.log(element)
+            element.addEventListener("copy", (e) => {
+            console.log(e)
+            let text = window.getSelection().toString();
+            e.clipboardData.setData("text", "复制后的文字:" + text);
+            e.preventDefault();
+          })
+        });
+        // document.addEventListener("copy", (e) => {
+        //   console.log(e)
+        //   let text = window.getSelection().toString();
+        //   e.clipboardData.setData("text", "复制后的文字:" + text);
+        //   // e.preventDefault();
+        // })
+      }
+    }
+  })
+  // window.addEventListener("copy", function(e){
+  //   let text = window.getSelection().toString();
+  //   // console.log(e)
+  //   e.clipboardData.setData("text", "复制后的1文字:" + text);
+  //   e.clipboardData.getData("text")
+  //   console.log(e.clipboardData.getData("text"))
+  //   e.preventDefault();
+  // })
+</script>
+</html>
